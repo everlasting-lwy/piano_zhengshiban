@@ -1,35 +1,39 @@
 # ACG525 FPGA 实时多音色电子琴
 
-正式整理版，2026年11月2日。完整工程以压缩包交付，保留全部目录结构。
+2026年11月3日更新。仓库保持公开，所有人无需登录即可下载。
 
-## 下载
+## 最新文件下载
 
-- [完整工程 piano_zhengshiban.zip](piano_zhengshiban.zip)（打开后点 Download raw 下载并解压）
-- [作品报告](FPGA实时多音色电子琴作品报告.docx)
-- [测试与演示报告](FPGA电子琴测试与演示报告.docx)
+- [完整工程 piano_zhengshiban.rar](https://github.com/everlasting-lwy/piano_zhengshiban/releases/download/v2026.11.03/piano_zhengshiban.rar)
+- [最新版作品报告 DOCX](https://github.com/everlasting-lwy/piano_zhengshiban/releases/download/v2026.11.03/FPGA_piano_report.docx)
+- [承诺书 PDF](https://github.com/everlasting-lwy/piano_zhengshiban/releases/download/v2026.11.03/chengnuoshu.pdf)
+- [查看本次发布及全部下载附件](https://github.com/everlasting-lwy/piano_zhengshiban/releases/tag/v2026.11.03)
 
-## 工程内容
+三个附件均按本次提供的原文件上传，内容不变。报告和承诺书仅使用英文下载文件名以兼容GitHub。作品报告以本页独立下载的最新版为准。
 
-包含373个文件：Gowin工程、RTL源码、约束、ROM、当前固件、Android源码与APK、Windows MIDI可视化工具、P18转换工具、测试样本、验证记录和两份最新报告。历史存档、签名密钥、临时缓存和未完成的P18桌面转换器草稿不包含在内。压缩包内SHA256.json可校验各文件。
+文件存放在 Releases 页面的 Assets 区域。请下载上面的工程 RAR，不要把GitHub自动生成的 Source code 压缩包当作完整工程。
 
-## 当前功能
+[测试与演示报告](FPGA电子琴测试与演示报告.docx)继续保留，用于接线核对、模块联动和演示参考。旧 ZIP 工程包和旧独立作品报告已从当前主分支文件列表移除，避免重复。Git提交历史保留恢复能力。
 
-18实体键（C4～F5）、四声部、四音色、32路谐波分量、三表情调节、混响/回声/合唱、双OLED与双编码器、超声演奏、电脑MIDI、手机36键联弹、曲库、离线音频转谱、下落练习、整曲RAM引导下载，以及SD卡自主读曲与脱机跟弹。32路谐波分量不代表32个独立声部。
+## 使用入口
 
-音频采用ACG525板载WM8960左声道扬声器；旧MAX98357A和陶晶驰串口屏不使用。SD使用电脑转换/拷入P18，已放弃通过APP蓝牙写入和删除SD歌曲；现有APK保留的历史入口不要操作。P18用于按键引导，不会自动演奏。
+下载RAR后使用支持RAR格式的软件解压，先看工程内README.md。
 
-## 解压后先看
+- 引脚表：docs/PINOUT.md
+- 构建和运行：docs/BUILD_AND_RUN.md
+- Gowin工程入口：piano.gprj
+- 当前固件：impl/pnr/piano1101_sd_ssd1306.fs
+- 手机APK：mobile/android/dist/PianoLink-piano1101-SD-v2.3.apk
+- P18转换工具：tools/p18_tool.py
 
-- README.md：工程入口及范围说明
-- docs/PINOUT.md：完整接线表
-- docs/BUILD_AND_RUN.md：构建、下载与使用
-- piano.gprj / build.tcl：Gowin工程与构建脚本
-- impl/pnr/piano1101_sd_ssd1306.fs：当前发布固件
-- mobile/android/dist/PianoLink-piano1101-SD-v2.3.apk：手机安装包
-- tools/p18_tool.py：已验证的CSV转P18命令行工具
+## 项目功能
 
-工程内部文件名保留piano1101，避免破坏引用。未更改硬件代码及已发布程序。Android签名密钥仅保留本机，重新生成签名的APK不能直接覆盖原签名版本。未为原始及第三方代码额外授予开源许可证，第三方许可证保留在工程内。
+工程提供18实体键、四声部、四音色、32路谐波分量、表情控制、混响/回声/合唱、双OLED与双编码器、超声演奏、电脑MIDI及手机联动。32路谐波分量不代表32个独立声部。音频使用ACG525板载WM8960，接线以工程内引脚表为准。
 
-## 压缩包校验
+SD曲谱采用电脑转换并拷入P18、FPGA自主读曲与脱机跟弹；已放弃APP经蓝牙写入及删除SD歌曲的使用流程。现有APK如显示历史SD写入入口，请勿使用。P18用于目标键位引导，不存原始时值，不会自动演奏。
 
-SHA256：`2dc3db21bcac5973fde4dc426a9c95a2b8bf736e9d36dd1243966114daa9f283`
+## 文件校验与许可
+
+下载后可用[SHA256SUMS.txt](SHA256SUMS.txt)核对三份新附件及保留的测试报告。
+
+提供的RAR内目录和文件按原样保留；最新版作品报告以本次独立附件为准。第三方许可证随工程保留，本次未为原始及第三方代码额外授予开源许可证。
